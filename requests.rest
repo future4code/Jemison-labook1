@@ -1,11 +1,26 @@
 ### Endpoint Cadastrar novo Usuário
-POST http://localhost:3003/users
+POST http://localhost:3003/user/create
 Content-Type: application/json
 
 {
-    "name":"admin",
-    "email":"admin@labook.com",
-    "password":"dkakdk9ei01910930kdaokdacaokkdp"
+    "name":"Joshua Brown",
+    "email":"jbrown@gmail.com",
+    "password":"231010rocks"
+}
+
+### Endpoint
+GET http://localhost:3003/
+
+
+### Endpoint Criar novo Post
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    "photo":"kkk.jpg",
+    "description":"",
+    "type":"event",
+    "author":"f7602a69-d48f-455a-b3e7-6dafaf75310c"
 }
 
 ### Endpoint
