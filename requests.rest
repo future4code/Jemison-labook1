@@ -1,0 +1,12 @@
+### Endpoint Cadastrar novo Usuário
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name":"admin",
+    "email":"admin@labook.com",
+    "password":"dkakdk9ei01910930kdaokdacaokkdp"
+}
+
+### Endpoint
+GET http://localhost:3003/
