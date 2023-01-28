@@ -23,5 +23,5 @@ Content-Type: application/json
     "author":"f7602a69-d48f-455a-b3e7-6dafaf75310c"
 }
 
-### Endpoint
-GET http://localhost:3003/
+### Endpoint Pega Post por ID
+GET http://localhost:3003/post/5e4e110d-80bc-41cb-ae56-98231c8dfa63

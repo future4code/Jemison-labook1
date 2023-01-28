@@ -23,3 +23,9 @@ export class EmptyFields extends CustomError {
         super(400, "Por favor, preencha os campos obrigatórios e tente novamente.")
     }
 }
+
+export class PostNotFound extends CustomError {
+    constructor() {
+        super(404, "Opa! Isso nunca me aconteceu, eu juro. Não encontrei seu post. :/")
+    }
+}
