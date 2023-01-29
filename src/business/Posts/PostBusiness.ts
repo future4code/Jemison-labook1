@@ -17,8 +17,6 @@ export class PostBusiness {
 
             const { photo, description, type, author } = input;
 
-            console.log(input)
-
             if (!photo && !description && !author) {
                 throw new EmptyFields()
             }
