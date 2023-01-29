@@ -45,7 +45,7 @@ export class PostDatabase extends BaseDatabase {
 
             PostDatabase.connection.initialize()
 
-            const post = await PostDatabase.connection("labook_posts").select("*").where({ id })
+            const post = await PostDatabase.connection(this.userTable).select("*").where({ id })
 
             return post;
 

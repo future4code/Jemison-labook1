@@ -3,13 +3,10 @@ POST http://localhost:3003/user/create
 Content-Type: application/json
 
 {
-    "name":"Joshua Brown",
-    "email":"jbrown@gmail.com",
-    "password":"231010rocks"
+    "name":"Thomas Brown",
+    "email":"thomasbrownlawyer@nyclawyers.com",
+    "password":"puppyLover22331"
 }
-
-### Endpoint
-GET http://localhost:3003/
 
 
 ### Endpoint Criar novo Post
@@ -25,3 +22,30 @@ Content-Type: application/json
 
 ### Endpoint Pega Post por ID
 GET http://localhost:3003/post/5e4e110d-80bc-41cb-ae56-98231c8dfa63
+
+### Endpoint Criar uma Amizade
+POST http://localhost:3003/friends/create
+Content-Type: application/json
+
+{
+    "requester":"1674936618139",
+    "receiver":"e3361556-6d3d-4a6e-953f-561c9be41eed"
+}
+
+### Endpoint Desfazer uma Amizade
+DELETE http://localhost:3003/friends/delete
+Content-Type: application/json
+
+{
+    "requester":"e3361556-6d3d-4a6e-953f-561c9be41eed",
+    "receiver":"1674936618139"
+}
+
+### Endpoint Pegar uma Amizade
+DELETE http://localhost:3003/friends/details
+Content-Type: application/json
+
+{
+    "requester":"e3361556-6d3d-4a6e-953f-561c9be41eed",
+    "receiver":"1674936618139"
+}
