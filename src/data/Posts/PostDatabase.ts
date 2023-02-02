@@ -61,4 +61,40 @@ export class PostDatabase extends BaseDatabase {
 
     }
 
+    public getFriendsFeed = async (id: string): Promise<PostOutputDTO[]> => {
+        try {
+
+            PostDatabase.connection.initialize()
+
+            let friendsTable:string = 'labook_friendships'
+            let postAuthor:string = 'labook_posts.author_id'
+            let FKReceiver:string = 'labook_friendships.fk_friendship_receiver'
+            let FKRequester:string = 'labook_friendships.fk_friendship_requester'
+
+            const part1:PostOutputDTO[] = await PostDatabase.connection(this.userTable).join(friendsTable, postAuthor, '=', FKReceiver).where({fk_friendship_requester: id})
+            .select('*')
+
+
+            const part2:PostOutputDTO[] = await PostDatabase.connection(this.userTable).join(friendsTable, postAuthor, '=', FKRequester).where({fk_friendship_receiver: id})
+            .select('*')
+
+            console.log(part1.length, part2.length)
+
+
+            let posts:PostOutputDTO[] = part1.concat(part2)
+
+            return posts;
+
+        } catch (error: any) {
+
+            throw new CustomError(error.statusCode, error.message)
+
+        } finally {
+
+            PostDatabase.connection.destroy();
+
+        }
+
+    }
+
 }

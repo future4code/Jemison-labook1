@@ -3,6 +3,6 @@ export interface PostOutputDTOToTS {
     photo: string,
     description: string,
     type: string,
-    createdAt: Date,
+    createdAt: Date | string,
     author: string
 }

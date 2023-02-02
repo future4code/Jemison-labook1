@@ -21,5 +21,19 @@ export class UserController {
          res.status(error.statusCode || 400).send(error.message || error.sqlMessage)
       }
    }
+
+   public getUsers = async (req: Request, res: Response) => {
+      try {
+
+         const userBusiness = new UserBusiness()
+         
+         let users = await userBusiness.getUsers()
+
+         res.status(200).send(users)
+         
+      } catch (error: any) {
+         res.status(error.statusCode || 400).send(error.message || error.sqlMessage)
+      }
+   }
 }
 

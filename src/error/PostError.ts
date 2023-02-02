@@ -26,6 +26,6 @@ export class EmptyFields extends CustomError {
 
 export class PostNotFound extends CustomError {
     constructor() {
-        super(404, "Opa! Isso nunca me aconteceu, eu juro. Não encontrei seu post. :/")
+        super(404, "Opa! Isso nunca me aconteceu, eu juro. Não encontrei nenhum post. :/")
     }
 }
