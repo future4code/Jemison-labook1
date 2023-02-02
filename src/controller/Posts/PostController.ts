@@ -39,7 +39,27 @@ export class PostController {
 
          const post: PostOutputDTOToTS = await postBusiness.getPostByID(input.id)
 
-         res.status(201).send(post)
+         res.status(200).send(post)
+
+      } catch (error: any) {
+
+         res.status(error.statusCode || 400).send(error.message || error.sqlMessage)
+         
+      }
+   }
+
+   public getFriendsFeed = async (req: Request, res: Response): Promise<void> => {
+      try {
+
+         const input: PostIDInputDTO = {
+            id: req.body.id
+         }
+
+         const postBusiness = new PostBusiness()
+
+         const posts: PostOutputDTOToTS[] = await postBusiness.getFriendsFeed(input.id)
+
+         res.status(200).send(posts)
 
       } catch (error: any) {
 

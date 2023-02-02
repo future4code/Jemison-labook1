@@ -28,4 +28,21 @@ export class UserDatabase extends BaseDatabase {
 
     }
 
+    public getUsers = async ():Promise<User[]> => {
+        try {
+
+            UserDatabase.connection.initialize()
+            
+            let queryResult:User[] = await UserDatabase.connection.select('*').table(this.userTable)
+
+            return queryResult
+
+        } catch (error: any) {
+            throw new CustomError(error.statusCode, error.message)
+        } finally {
+            UserDatabase.connection.destroy();
+        }
+
+    }
+
 }

@@ -34,7 +34,7 @@ export class FriendshipController {
 
          const friendship: OutputDTOToTS = await friendshipBusiness.getFriendshipByUsers(input)
 
-         res.status(201).send(friendship)
+         res.status(200).send({message: 'Amizade encontrada!', friends: friendship})
 
       } catch (error: any) {
 

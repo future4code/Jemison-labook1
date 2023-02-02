@@ -1,7 +1,7 @@
 import { CustomError } from './../../error/CustomError';
 import { UserInputDTO } from './../../model/Users/UserInputDTO';
 import { UserDatabase } from './../../data/Users/UserDatabase';
-import { EmptyFields, EmptyName, EmptyEmail, EmptyPassword, PasswordTooShort, InvalidEmail } from './../../error/UserError';
+import { EmptyFields, EmptyName, EmptyEmail, EmptyPassword, PasswordTooShort, InvalidEmail, NoUserFound } from './../../error/UserError';
 import { generateID } from './../../services/idGenerator';
 import { validateEmail } from './../../services/emailValidator';
 import { User } from '../../model/Users/User';
@@ -35,7 +35,7 @@ export class UserBusiness {
                 throw new InvalidEmail()
             }
 
-            if (password.length <= 8) {
+            if (password.length < 8) {
                 throw new PasswordTooShort()
             }
 
@@ -56,18 +56,24 @@ export class UserBusiness {
     }
 
 
-    //    public getUsers = async () => {
+    public getUsers = async ():Promise<User[]> => {
 
-    //       try {
-    //          const userDatabase = new UserDatabase()
+        try {
+            const userDatabase = new UserDatabase()
 
-    //          return await userDatabase.getUsers();
+            let queryResult = await userDatabase.getUsers()
 
-    //       } catch (error: any) {
-    //          throw new CustomError(error.statusCode, error.message)
+            if (!queryResult.length) {
+                throw new NoUserFound()
+            }
 
-    //       }
-    //    }
+            return queryResult
+
+        } catch (error: any) {
+            throw new CustomError(error.statusCode, error.message)
+
+        }
+    }
 
 
 }

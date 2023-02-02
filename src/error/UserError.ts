@@ -35,3 +35,9 @@ export class EmptyFields extends CustomError {
         super(400, "Por favor, preencha todos os campos e tente novamente.")
     }
 }
+
+export class NoUserFound extends CustomError {
+    constructor() {
+        super(404, "Que vazio por aqui. Não encontrei nenhum usuário.")
+    }
+}

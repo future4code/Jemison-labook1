@@ -8,4 +8,6 @@ export const postRouter = express.Router();
 
 postRouter.post("/create",postController.createPost)
 
+postRouter.get("/feed",postController.getFriendsFeed)
+
 postRouter.get("/:id",postController.getPostByID)
