@@ -87,6 +87,7 @@ Esse projeto já possua duas tabelas criadas, por isso só foi necessário acres
 ## 🔗Link para Acessar a API
 
 - **Link do Render:** <a href="https://labook.onrender.com/">https://labook.onrender.com/</a>
+- **Link da Documentação:** <a href="https://documenter.getpostman.com/view/22437697/2s935mrPy6">https://documenter.getpostman.com/view/22437697/2s935mrPy6/</a>
 
 
 ---
