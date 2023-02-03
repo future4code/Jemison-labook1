@@ -52,23 +52,23 @@ Este é um projeto de Back-end, desenvolvido no bootcamp da Labenu, cujo o princ
 
 **Endpoints a se organizar:**
 
-- [v] Cadastrar novos usuários
-- [v] Criar novos posts
-- [v] Buscar post por ID
+- [x] Cadastrar novos usuários
+- [x] Criar novos posts
+- [x] Buscar post por ID
 
 **Endpoints a se criar:**
 
-- [v] Linkar dois usuários por uma amizade
-- [v] Desfazer uma amizade
-- [v] Ver o feed de amigos em ordem do mais recente
+- [x] Linkar dois usuários por uma amizade
+- [x] Desfazer uma amizade
+- [x] Ver o feed de amigos em ordem do mais recente
 
 **Desafios:**
 
-- [x] Ver apenas um tipo de post (normal ou evento)
-- [x] Curtir Post
-- [x] Descurtir Post
-- [x] Comentar Post
-- [x] Paginar o Feed
+- [ ] Ver apenas um tipo de post (normal ou evento)
+- [ ] Curtir Post
+- [ ] Descurtir Post
+- [ ] Comentar Post
+- [ ] Paginar o Feed
 
 ---
 
