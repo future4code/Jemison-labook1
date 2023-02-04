@@ -64,9 +64,9 @@ Este é um projeto de Back-end, desenvolvido no bootcamp da Labenu, cujo o princ
 
 **Desafios:**
 
-- [ ] Ver apenas um tipo de post (normal ou evento)
-- [ ] Curtir Post
-- [ ] Descurtir Post
+- [x] Ver apenas um tipo de post (normal ou evento)
+- [x] Curtir Post
+- [x] Descurtir Post
 - [ ] Comentar Post
 - [ ] Paginar o Feed
 
