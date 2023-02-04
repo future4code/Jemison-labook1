@@ -68,3 +68,33 @@ Content-Type: application/json
     "requester":"33015399-3527-4a32-aeea-30aa759b31b9",
     "receiver":"f7602a69-d48f-455a-b3e7-6dafaf75310c"
 }
+
+
+// Endpoints => Likes
+
+### Endpoint Curtir um Post => Funcional
+POST http://localhost:3003/interactions/like
+Content-Type: application/json
+
+{
+    "user":"f7602a69-d48f-455a-b3e7-6dafaf75310c",
+    "post":"3bb166f0-bcba-40f2-bb98-ccf42bd11a87"
+}
+
+### Endpoint Checar se Post foi curtido anteriormente
+GET http://localhost:3003/interactions/check
+Content-Type: application/json
+
+{
+    "user":"f7602a69-d48f-455a-b3e7-6dafaf75310c",
+    "post":"3bb166f0-bcba-40f2-bb98-ccf42bd11a87"
+}
+
+### Endpoint Descurtir Post
+DELETE http://localhost:3003/interactions/dislike
+Content-Type: application/json
+
+{
+    "user":"f7602a69-d48f-455a-b3e7-6dafaf75310c",
+    "post":"3bb166f0-bcba-40f2-bb98-ccf42bd11a87"
+}
