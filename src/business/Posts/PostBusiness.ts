@@ -124,4 +124,25 @@ export class PostBusiness {
 
         }
     }
+
+    public getPostsByType = async (type: string) => {
+
+        try {
+            const postDatabase = new PostDatabase()
+
+            let queryResults = await postDatabase.getPostsByType(type);
+
+            if (!queryResults.length) {
+                throw new PostNotFound()
+            }
+
+
+
+            return queryResults
+
+        } catch (error: any) {
+            throw new CustomError(error.statusCode, error.message)
+
+        }
+    }
 }

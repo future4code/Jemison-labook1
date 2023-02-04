@@ -26,6 +26,9 @@ Content-Type: application/json
 ### Endpoint Pega Post por ID => Funcional
 GET http://localhost:3003/post/5e4e110d-80bc-41cb-ae56-98231c8dfa63
 
+### Endpoint Pega Posts por Tipo => Funcional
+GET http://localhost:3003/post/?type=event
+
 ### Endpoint Criar novo Post => Funcional
 POST http://localhost:3003/post/create
 Content-Type: application/json
