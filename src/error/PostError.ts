@@ -29,3 +29,9 @@ export class PostNotFound extends CustomError {
         super(404, "Opa! Isso nunca me aconteceu, eu juro. Não encontrei nenhum post. :/")
     }
 }
+
+export class UnexpectedType extends CustomError {
+    constructor() {
+        super(400, "Ops! Não tenho nenhum tipo de post da categoria que você escolheu. Tente 'normal' ou 'event'.")
+    }
+}

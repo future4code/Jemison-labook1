@@ -1,3 +1,5 @@
+import { UnexpectedType } from './../../error/PostError';
+import { PostTypeInputDTO } from './../../model/Posts/PostTypeInputDTO';
 import { PostIDInputDTO } from './../../model/Posts/PostIDInputDTO';
 import { Request, Response } from 'express'
 import { PostBusiness } from '../../business/Posts/PostBusiness';
@@ -60,6 +62,30 @@ export class PostController {
          const posts: PostOutputDTOToTS[] = await postBusiness.getFriendsFeed(input.id)
 
          res.status(200).send(posts)
+
+      } catch (error: any) {
+
+         res.status(error.statusCode || 400).send(error.message || error.sqlMessage)
+         
+      }
+   }
+
+   public getPostsByType = async (req: Request, res: Response): Promise<void> => {
+      try {
+
+         const input: PostTypeInputDTO = {
+            type: req.query.type as string
+         }
+
+         if (input.type !== 'normal' && input.type !== 'event') {
+            throw new UnexpectedType()
+         }
+
+         const postBusiness = new PostBusiness()
+
+         const posts: PostOutputDTOToTS[] = await postBusiness.getPostsByType(input.type)
+
+         res.status(200).send({ message: `Todos os posts do tipo ${input.type}:`, posts: posts})
 
       } catch (error: any) {
 

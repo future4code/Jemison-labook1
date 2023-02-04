@@ -1,3 +1,4 @@
+import { PostOutputDTOToTS } from './../../model/Posts/PostOutputDTOToTS';
 import { PostOutputDTO } from './../../model/Posts/PostOutputDTO';
 import { PostIDInputDTO } from './../../model/Posts/PostIDInputDTO';
 import { CustomError } from './../../error/CustomError';
@@ -82,6 +83,39 @@ export class PostDatabase extends BaseDatabase {
 
 
             let posts:PostOutputDTO[] = part1.concat(part2)
+
+            return posts;
+
+        } catch (error: any) {
+
+            throw new CustomError(error.statusCode, error.message)
+
+        } finally {
+
+            PostDatabase.connection.destroy();
+
+        }
+
+    }
+
+    public getPostsByType = async (type: string): Promise<PostOutputDTOToTS[]> => {
+        try {
+
+            PostDatabase.connection.initialize()
+
+            let queryResults:PostOutputDTO[] = await PostDatabase.connection(this.userTable).select("*").where({ type })
+
+            let posts = queryResults.map((query) => {
+                let post: PostOutputDTOToTS = {
+                    id: query.id,
+                    photo: query.photo,
+                    description: query.description,
+                    type: query.type,
+                    createdAt: new Date(query.created_at).toLocaleDateString(undefined, { weekday: "long", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute:"numeric"}),
+                    author: query.author_id
+                }
+                return post
+            })
 
             return posts;
 
