@@ -11,7 +11,7 @@ import { BaseDatabase } from './../BaseDatabase';
 
 export class PostDatabase extends BaseDatabase {
 
-    private userTable = 'labook_posts'
+    private postsTable = 'labook_posts'
 
 
     public createPost = async (post: Post): Promise<void> => {
@@ -27,7 +27,7 @@ export class PostDatabase extends BaseDatabase {
                 author_id: post.author
             }
 
-            await PostDatabase.connection.insert(postToDB).into(this.userTable)
+            await PostDatabase.connection.insert(postToDB).into(this.postsTable)
 
         } catch (error: any) {
 
@@ -46,7 +46,7 @@ export class PostDatabase extends BaseDatabase {
 
             PostDatabase.connection.initialize()
 
-            const post = await PostDatabase.connection(this.userTable).select("*").where({ id })
+            const post = await PostDatabase.connection(this.postsTable).select("*").where({ id })
 
             return post;
 
@@ -72,11 +72,11 @@ export class PostDatabase extends BaseDatabase {
             let FKReceiver:string = 'labook_friendships.fk_friendship_receiver'
             let FKRequester:string = 'labook_friendships.fk_friendship_requester'
 
-            const part1:PostOutputDTO[] = await PostDatabase.connection(this.userTable).join(friendsTable, postAuthor, '=', FKReceiver).where({fk_friendship_requester: id})
+            const part1:PostOutputDTO[] = await PostDatabase.connection(this.postsTable).join(friendsTable, postAuthor, '=', FKReceiver).where({fk_friendship_requester: id})
             .select('*')
 
 
-            const part2:PostOutputDTO[] = await PostDatabase.connection(this.userTable).join(friendsTable, postAuthor, '=', FKRequester).where({fk_friendship_receiver: id})
+            const part2:PostOutputDTO[] = await PostDatabase.connection(this.postsTable).join(friendsTable, postAuthor, '=', FKRequester).where({fk_friendship_receiver: id})
             .select('*')
 
             console.log(part1.length, part2.length)
@@ -103,7 +103,7 @@ export class PostDatabase extends BaseDatabase {
 
             PostDatabase.connection.initialize()
 
-            let queryResults:PostOutputDTO[] = await PostDatabase.connection(this.userTable).select("*").where({ type })
+            let queryResults:PostOutputDTO[] = await PostDatabase.connection(this.postsTable).select("*").where({ type })
 
             let posts = queryResults.map((query) => {
                 let post: PostOutputDTOToTS = {

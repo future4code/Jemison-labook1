@@ -1,5 +1,5 @@
-import { FriendshipController } from './../controller/Friendships/FriendshipController';
 import express from 'express';
+import { FriendshipController } from './../controller/Friendships/FriendshipController';
 
 
 

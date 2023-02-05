@@ -15,7 +15,7 @@ export class UserController {
          
          await userBusiness.createUser(input)
 
-         res.status(201).send({ message: "Usuário criado!" })
+         res.status(201).send({ message: "Usuário criado!", user: input })
          
       } catch (error: any) {
          res.status(error.statusCode || 400).send(error.message || error.sqlMessage)

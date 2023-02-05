@@ -28,6 +28,8 @@ export class LikesBusiness {
                 throw new EmptyPost()
             }
 
+            let queryResults = await likesDatabase.checkIfLiked(input)
+
             const id: string = generateID()
 
             const request: LikedPostDTOToDB = {
@@ -35,8 +37,6 @@ export class LikesBusiness {
                 user,
                 post
             }
-
-            let queryResults = await likesDatabase.checkIfLiked(input)
 
             if (queryResults.length) {
                 throw new PostAlreadyLiked()

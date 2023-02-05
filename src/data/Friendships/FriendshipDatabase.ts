@@ -8,7 +8,7 @@ import { RequestInputDTO } from '../../model/Friendships/RequestInputDTO';
 
 export class FriendshipDatabase extends BaseDatabase {
 
-    private userTable = 'labook_friendships'
+    private friendshipTable = 'labook_friendships'
 
 
     public createFriendship = async (request: FriendshipRequest): Promise<void> => {
@@ -22,7 +22,7 @@ export class FriendshipDatabase extends BaseDatabase {
                 fk_friendship_receiver: request.receiver,
             }
 
-            await FriendshipDatabase.connection.insert(requestToDB).into(this.userTable)
+            await FriendshipDatabase.connection.insert(requestToDB).into(this.friendshipTable)
 
         } catch (error: any) {
 
@@ -46,7 +46,7 @@ export class FriendshipDatabase extends BaseDatabase {
                 fk_friendship_receiver: friendship.receiver,
             }
 
-            const friendshipFound = await FriendshipDatabase.connection(this.userTable).select("*").where(requestToDB)
+            const friendshipFound = await FriendshipDatabase.connection(this.friendshipTable).select("*").where(requestToDB)
 
             return friendshipFound;
 
@@ -68,7 +68,7 @@ export class FriendshipDatabase extends BaseDatabase {
                 fk_friendship_receiver: request.receiver,
             }
 
-            await FriendshipDatabase.connection(this.userTable).where(requestToDB).del()
+            await FriendshipDatabase.connection(this.friendshipTable).where(requestToDB).del()
 
         } catch (error: any) {
             console.log(error)
