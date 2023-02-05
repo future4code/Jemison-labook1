@@ -1,5 +1,5 @@
-import { LikesController } from './../controller/Likes/LikesController';
 import express from 'express';
+import { LikesController } from './../controller/Likes/LikesController';
 
 
 

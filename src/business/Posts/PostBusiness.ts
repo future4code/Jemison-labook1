@@ -52,7 +52,6 @@ export class PostBusiness {
         }
     }
 
-
     public getPostByID = async (id: string) => {
 
         try {
@@ -101,8 +100,6 @@ export class PostBusiness {
             if (!queryResult.length) {
                 throw new PostNotFound()
             }
-
-            // queryResult = queryResult.sort((a, b) => Number(b.created_at) - Number(a.created_at))
 
             let posts = queryResult.map((query) => {
                 let post: PostOutputDTOToTS = {

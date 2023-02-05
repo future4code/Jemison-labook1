@@ -8,7 +8,7 @@ import { LikedPostDTOToDB } from '../../model/Likes/LikedPostDTOToDB';
 
 export class LikesDatabase extends BaseDatabase {
 
-    private userTable = 'labook_likes'
+    private likesTable = 'labook_likes'
 
 
     public likePost = async (request: LikedPostDTOToDB): Promise<void> => {
@@ -20,7 +20,7 @@ export class LikesDatabase extends BaseDatabase {
                 post: request.post,
             }
 
-            await LikesDatabase.connection.insert(requestToDB).into(this.userTable)
+            await LikesDatabase.connection.insert(requestToDB).into(this.likesTable)
 
         } catch (error: any) {
 
@@ -38,7 +38,7 @@ export class LikesDatabase extends BaseDatabase {
                 post: request.post,
             }
 
-            let queryResults:LikedPostDTOOutputFromDB[] = await LikesDatabase.connection(this.userTable).select('*').where(requestToDB)
+            let queryResults:LikedPostDTOOutputFromDB[] = await LikesDatabase.connection(this.likesTable).select('*').where(requestToDB)
 
             return queryResults
 
@@ -58,7 +58,7 @@ export class LikesDatabase extends BaseDatabase {
                 post: request.post,
             }
 
-            await LikesDatabase.connection(this.userTable).where(requestToDB).del()
+            await LikesDatabase.connection(this.likesTable).where(requestToDB).del()
 
             console.log('teste')
 

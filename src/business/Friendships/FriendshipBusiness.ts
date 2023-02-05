@@ -1,7 +1,7 @@
 import { OutputDTOToDB } from './../../model/Friendships/OutputDTOToDB';
 import { RequestInputDTO } from './../../model/Friendships/RequestInputDTO';
 import { RequestDTOToDB } from './../../model/Friendships/RequestDTOToDB';
-import { CannotDeleteFriendshipNotFound, FriendshipNotFound } from './../../error/FriendshipError';
+import { CannotDeleteFriendshipNotFound, FriendshipAlreadyExists, FriendshipNotFound } from './../../error/FriendshipError';
 import { FriendshipDatabase } from '../../data/Friendships/FriendshipDatabase';
 import { EmptyFields, EmptyRequester, EmptyReceiver } from '../../error/FriendshipError';
 import { generateID } from './../../services/idGenerator';
@@ -28,6 +28,12 @@ export class FriendshipBusiness {
 
             if (!receiver) {
                 throw new EmptyReceiver()
+            }
+
+            let queryResult = await friendshipDatabase.getFriendshipsByUsers(input)
+
+            if (queryResult.length > 0) {
+                throw new FriendshipAlreadyExists()
             }
 
             const id: string = generateID()
@@ -97,7 +103,6 @@ export class FriendshipBusiness {
 
         }
     }
-
 
     public deleteFriendship = async (input: RequestInputDTO) => {
         try {

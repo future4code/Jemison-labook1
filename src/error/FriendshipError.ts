@@ -29,3 +29,9 @@ export class CannotDeleteFriendshipNotFound extends CustomError {
         super(404, "Desculpe. Acho que tropeçamos numa oportunidade. Não foi possível desfazer a amizade, pois vocês ainda não são amigos. Que tal fazer essa amizade agora?")
     }
 }
+
+export class FriendshipAlreadyExists extends CustomError {
+    constructor() {
+        super(404, "Desculpe. Essa amizade já existe e não pode ser refeita.")
+    }
+}

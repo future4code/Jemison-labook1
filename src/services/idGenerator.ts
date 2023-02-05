@@ -1,5 +1,3 @@
 import { v4 } from 'uuid';
 
-export const generateID = () => {
-    return v4()
-}
+export const generateID = () => v4()

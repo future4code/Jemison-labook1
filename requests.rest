@@ -47,7 +47,7 @@ GET http://localhost:3003/friends/details
 Content-Type: application/json
 
 {
-    "requester":"079b2334-53b8-4197-96d4-f075dcbbbdb4",
+    "requester":"33015399-3527-4a32-aeea-30aa759b31b9",
     "receiver":"f7602a69-d48f-455a-b3e7-6dafaf75310c"
 }
 

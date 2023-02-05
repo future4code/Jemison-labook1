@@ -55,7 +55,6 @@ export class UserBusiness {
         }
     }
 
-
     public getUsers = async ():Promise<User[]> => {
 
         try {
@@ -74,6 +73,4 @@ export class UserBusiness {
 
         }
     }
-
-
 }
