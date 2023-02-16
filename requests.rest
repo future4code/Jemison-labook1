@@ -1,0 +1,100 @@
+// Endpoints => User
+
+### Endpoint Pegar Todos os Usuários => Funcional
+GET http://localhost:3003/user/all
+
+### Endpoint Cadastrar novo Usuário => Funcional
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name":"admin3",
+    "email":"admin3@labook.com",
+    "password":"novasenha"
+}
+
+// Endpoints => Post
+
+### Endpoint Pegar Feed dos amigos => Funcional
+GET http://localhost:3003/post/feed
+Content-Type: application/json
+
+{
+    "id":"33015399-3527-4a32-aeea-30aa759b31b9"
+}
+
+### Endpoint Pega Post por ID => Funcional
+GET http://localhost:3003/post/5e4e110d-80bc-41cb-ae56-98231c8dfa63
+
+### Endpoint Pega Posts por Tipo => Funcional
+GET http://localhost:3003/post/?type=event
+
+### Endpoint Criar novo Post => Funcional
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    "photo":"lanadelrey.png",
+    "description":"Listening to her in the radio today",
+    "type":"normal",
+    "author":"079b2334-53b8-4197-96d4-f075dcbbbdb4"
+}
+
+// Endpoints => Friendships
+
+### Endpoint Pegar uma Amizade => Funcional
+GET http://localhost:3003/friends/details
+Content-Type: application/json
+
+{
+    "requester":"33015399-3527-4a32-aeea-30aa759b31b9",
+    "receiver":"f7602a69-d48f-455a-b3e7-6dafaf75310c"
+}
+
+### Endpoint Criar uma Amizade => Funcional
+POST http://localhost:3003/friends/create
+Content-Type: application/json
+
+{
+    "requester":"33015399-3527-4a32-aeea-30aa759b31b9",
+    "receiver":"f7602a69-d48f-455a-b3e7-6dafaf75310c"
+}
+
+### Endpoint Desfazer uma Amizade => Funcional
+DELETE http://localhost:3003/friends/delete
+Content-Type: application/json
+
+{
+    "requester":"33015399-3527-4a32-aeea-30aa759b31b9",
+    "receiver":"f7602a69-d48f-455a-b3e7-6dafaf75310c"
+}
+
+
+// Endpoints => Likes
+
+### Endpoint Curtir um Post => Funcional
+POST http://localhost:3003/interactions/like
+Content-Type: application/json
+
+{
+    "user":"f7602a69-d48f-455a-b3e7-6dafaf75310c",
+    "post":"3bb166f0-bcba-40f2-bb98-ccf42bd11a87"
+}
+
+### Endpoint Checar se Post foi curtido anteriormente
+GET http://localhost:3003/interactions/check
+Content-Type: application/json
+
+{
+    "user":"f7602a69-d48f-455a-b3e7-6dafaf75310c",
+    "post":"3bb166f0-bcba-40f2-bb98-ccf42bd11a87"
+}
+
+### Endpoint Descurtir Post
+DELETE http://localhost:3003/interactions/dislike
+Content-Type: application/json
+
+{
+    "user":"f7602a69-d48f-455a-b3e7-6dafaf75310c",
+    "post":"3bb166f0-bcba-40f2-bb98-ccf42bd11a87"
+}
